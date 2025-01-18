@@ -16,7 +16,7 @@ class WeiboSpiderType(TypedDict):
     created_at: int
     edit_at: int | None
     area: str
-    pics: str
+    pics: list[str]
 
 
 class WeiboSpiderModel(BaseModel):
