@@ -17,7 +17,7 @@ class WeiboSpiderType(TypedDict):
     created_at: int
     edit_at: int | None
     area: str
-    pics: list[str]
+    pics: list[str] | None
 
 
 class WeiboSpiderModel(BaseModel):
@@ -32,7 +32,7 @@ class WeiboSpiderModel(BaseModel):
     created_at: Mapped[int] = mapped_column(INTEGER, nullable=False)
     edit_at: Mapped[int | None] = mapped_column(INTEGER)
     area: Mapped[str] = mapped_column(String(255), nullable=False)
-    pics: Mapped[list[str]] = mapped_column(JSON, nullable=False)
+    pics: Mapped[list[str]] = mapped_column(JSON)
 
 
 class WeiboSpiderConnect:
