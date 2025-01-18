@@ -1,0 +1,46 @@
+{
+  "name": "idol_live_scrapy",
+  "packageManager": "yarn@4.6.0",
+  "scripts": {
+    "start": "node lib/index.mjs",
+    "dev": "npm run clean && tsc --outDir lib --sourceMap --watch",
+    "build": "npm run clean && tsc --outDir lib --sourceMap",
+    "clean": "rimraf lib",
+    "eslint": "cross-env COMMITLINT=1 eslint ./ --fix --cache --cache-location .eslintcache --no-warn-ignored",
+    "eslint:no-fix": "cross-env COMMITLINT=1 eslint ./ --cache --cache-location .eslintcache --no-warn-ignored",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "cron": "^3.5.0",
+    "dayjs": "^1.11.13",
+    "source-map-support": "^0.5.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.23.3",
+    "@sweet-milktea/babel-preset-sweet": "^4.4.0",
+    "@types/node": "^22",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "commitizen": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.18.0",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": "cross-env COMMITLINT=1 eslint --cache --cache-location .eslintcache --no-warn-ignored"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

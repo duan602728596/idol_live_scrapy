@@ -1,0 +1,15 @@
+[project]
+name = 'idol_live_scrapy'
+version = '0.0.0'
+requires-python = '==3.13'
+dependencies = [
+  'openpyxl==3.1.4',
+  'pandas==2.2.3',
+  'psycopg[binary]==3.2.4',
+  'python-dotenv==1.0.1',
+  'scrapy==2.12.0',
+  'SQLAlchemy==2.0.37'
+]
+
+[tool.distutils.egg_info]
+egg_base = "target"
