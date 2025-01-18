@@ -1,7 +1,7 @@
 [project]
 name = 'idol_live_scrapy'
 version = '0.0.0'
-requires-python = '==3.13'
+requires-python = '>=3.13'
 dependencies = [
   'openpyxl==3.1.4',
   'pandas==2.2.3',
