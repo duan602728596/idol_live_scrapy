@@ -82,10 +82,12 @@ class LiveSpider(Spider):
             if not (created_at == db_result.created_at and edit_at == db_result.edit_at):
                 # 有数据，需要更新
                 update_item: WeiboIdolUpdateLiveItem = WeiboIdolUpdateLiveItem(bid=card['mblog']['bid'], payload={
-                    'created_at': created_at,
-                    'edit_at': edit_at,
+                    'screen_name': card['mblog']['user']['screen_name'],
+                    'avatar_hd': card['mblog']['user']['avatar_hd'],
                     'raw_text': card['mblog']['text'],
                     'pics': self.get_pics(card['mblog']),
+                    'created_at': created_at,
+                    'edit_at': edit_at,
                     'area': config['area'],
                 })
                 yield Request(url=self.desc_url.format(card['mblog']['bid']),

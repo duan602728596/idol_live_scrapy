@@ -12,6 +12,7 @@ class WeiboSpiderType(TypedDict):
     bid: str
     uid: str
     screen_name: str
+    avatar_hd: str
     raw_text: str
     created_at: int
     edit_at: int | None
@@ -26,6 +27,7 @@ class WeiboSpiderModel(BaseModel):
     bid: Mapped[str] = mapped_column(String(30), primary_key=True, nullable=False)
     uid: Mapped[str] = mapped_column(String(30), nullable=False)
     screen_name: Mapped[str] = mapped_column(String(30), nullable=False)
+    avatar_hd: Mapped[str] = mapped_column(String(255), nullable=False)
     raw_text: Mapped[str] = mapped_column(Text, nullable=False)
     created_at: Mapped[int] = mapped_column(INTEGER, nullable=False)
     edit_at: Mapped[int | None] = mapped_column(INTEGER)
