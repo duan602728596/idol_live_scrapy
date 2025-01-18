@@ -32,7 +32,7 @@ class WeiboSpiderModel(BaseModel):
     created_at: Mapped[int] = mapped_column(INTEGER, nullable=False)
     edit_at: Mapped[int | None] = mapped_column(INTEGER)
     area: Mapped[str] = mapped_column(String(255), nullable=False)
-    pics: Mapped[str] = mapped_column(JSON, nullable=False)
+    pics: Mapped[list[str]] = mapped_column(JSON, nullable=False)
 
 
 class WeiboSpiderConnect:
@@ -53,10 +53,12 @@ class WeiboSpiderConnect:
         with Session(engine_48tools1) as sess:
             wbsp: WeiboSpiderModel | None = sess.query(WeiboSpiderModel).filter(WeiboSpiderModel.bid == bid).first()
             if wbsp:
-                wbsp.created_at = update_dict['created_at']
-                wbsp.edit_at = update_dict['edit_at']
+                wbsp.screen_name = update_dict['screen_name']
+                wbsp.avatar_hd = update_dict['avatar_hd']
                 wbsp.raw_text = update_dict['raw_text']
                 wbsp.pics = update_dict['pics']
+                wbsp.created_at = update_dict['created_at']
+                wbsp.edit_at = update_dict['edit_at']
                 wbsp.area = update_dict['area']
                 sess.commit()
 
@@ -66,8 +68,8 @@ class WeiboSpiderConnect:
         with Session(engine_48tools1) as sess:
             wbsp: WeiboSpiderModel = WeiboSpiderModel(
                 aid=add_dict['aid'], bid=add_dict['bid'], uid=add_dict['uid'], screen_name=add_dict['screen_name'],
-                raw_text=add_dict['raw_text'], created_at=add_dict['created_at'], edit_at=add_dict['edit_at'],
-                area=add_dict['area'], pics=add_dict['pics'])
+                avatar_hd=add_dict['avatar_hd'], raw_text=add_dict['raw_text'], created_at=add_dict['created_at'],
+                edit_at=add_dict['edit_at'], area=add_dict['area'], pics=add_dict['pics'])
             sess.add(wbsp)
             sess.commit()
 
