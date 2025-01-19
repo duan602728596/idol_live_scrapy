@@ -57,22 +57,33 @@ CronJob.from({
 
 /* 删除过期数据 */
 CronJob.from({
-  cronTime: '0 0 3 1 * *',
+  cronTime: '0 0 0 1 * *',
   async onTick(): Promise<void> {
-    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]开始执行数据清理任务。`);
+    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]开始执行过期数据清理任务。`);
     await command(python, ['src/cron/clear_expiration.py'], join(__dirname, '..'));
-    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]数据清理任务执行完毕。`);
+    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]过期数据清理任务执行完毕。`);
   },
   start: true
 });
 
-/* 删除过期日志 */
+/* 删除过期爬虫日志文件 */
 CronJob.from({
-  cronTime: '0 0 3 31 * *',
+  cronTime: '0 0 3 1 * *',
   async onTick(): Promise<void> {
-    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]开始执行日志清理任务。`);
+    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]开始执行爬虫日志文件清理任务。`);
     await command(python, ['src/cron/clear_log.py'], join(__dirname, '..'));
-    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]日志清理任务执行完毕。`);
+    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]爬虫日志文件清理任务执行完毕。`);
+  },
+  start: true
+});
+
+/* 删除过期日志记录文件 */
+CronJob.from({
+  cronTime: '0 0 5 1 * *',
+  async onTick(): Promise<void> {
+    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]开始执行日志记录清理任务。`);
+    await command(python, ['src/cron/clear_log.py'], join(__dirname, '..'));
+    console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]日志记录清理任务执行完毕。`);
   },
   start: true
 });
