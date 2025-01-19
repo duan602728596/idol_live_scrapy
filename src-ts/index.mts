@@ -82,7 +82,7 @@ CronJob.from({
   cronTime: '0 0 5 1 * *',
   async onTick(): Promise<void> {
     console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]开始执行日志记录清理任务。`);
-    await command(python, ['src/cron/clear_log.py'], join(__dirname, '..'));
+    await command(python, ['src/cron/clear_log_db.py'], join(__dirname, '..'));
     console.log(`[${ dayjs().format('YYYY-MM-DD HH:mm:ss') }]日志记录清理任务执行完毕。`);
   },
   start: true
