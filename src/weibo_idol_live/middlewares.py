@@ -62,13 +62,13 @@ class WeiboIdolLiveSpiderMiddleware:
         init_db()
         LogConnect.add_one({
             'run_time': get_now_timestamp(),
-            'message': '爬虫抓取任务开始执行。',
+            'message': '定时任务开始执行。',
         })
 
     def spider_closed(self, spider):
         LogConnect.add_one({
             'run_time': get_now_timestamp(),
-            'message': '爬虫抓取任务执行完毕。',
+            'message': '定时任务执行完毕。',
         })
 
 

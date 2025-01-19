@@ -35,7 +35,7 @@ def is_one_month_ago_exact(d: date) -> bool:
 
 LogConnect.add_one({
     'run_time': get_now_timestamp(),
-    'message': '清理过期爬虫日志文件任务开始执行。',
+    'message': '清理过期日志文件任务开始执行。',
 })
 
 for file in files:
@@ -49,5 +49,5 @@ for file in files:
 
 LogConnect.add_one({
     'run_time': get_now_timestamp(),
-    'message': '清理过期爬虫日志文件任务执行完毕。',
+    'message': '清理过期日志文件任务执行完毕。',
 })
