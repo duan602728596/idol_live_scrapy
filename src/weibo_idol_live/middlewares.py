@@ -6,6 +6,8 @@
 from scrapy import signals
 from utils.spider_config import get_live_spider_config
 from utils.db import init_db
+from utils.times import get_now_timestamp
+from models.log import LogConnect
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
@@ -58,6 +60,16 @@ class WeiboIdolLiveSpiderMiddleware:
         spider.logger.info("Spider opened: %s" % spider.name)
         spider.live_spider_config = get_live_spider_config() # 从excel中读取配置
         init_db()
+        LogConnect.add_one({
+            'run_time': get_now_timestamp(),
+            'message': '爬虫抓取开始执行。',
+        })
+
+    def spider_closed(self, spider):
+        LogConnect.add_one({
+            'run_time': get_now_timestamp(),
+            'message': '爬虫抓取结束执行。',
+        })
 
 
 class WeiboIdolLiveDownloaderMiddleware:

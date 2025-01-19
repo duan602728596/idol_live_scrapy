@@ -13,3 +13,8 @@ def get_one_month_ago_timestamp() -> int:
     now: datetime = datetime.now()
     one_month_ago: datetime = now - timedelta(days=31)
     return int(one_month_ago.timestamp())
+
+def get_now_timestamp() -> int:
+    """ 获取当前时间戳 """
+    now: datetime = datetime.now()
+    return int(now.timestamp())
