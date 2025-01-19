@@ -13,7 +13,6 @@
   "dependencies": {
     "cron": "^3.5.0",
     "dayjs": "^1.11.13",
-    "pm2": "^5.4.3",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
