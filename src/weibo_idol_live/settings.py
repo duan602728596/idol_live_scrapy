@@ -98,7 +98,7 @@ FEED_EXPORT_ENCODING = "utf-8"
 
 
 # 日志相关配置
-def ensure_log_directory(log_path):
+def ensure_log_directory(log_path: str) -> None:
     """ 目录不存在时创建 """
     if not os.path.exists(log_path):
         os.makedirs(log_path)
@@ -109,6 +109,6 @@ log_dir: str = Path.joinpath(ROOT_DIR, 'resources/log').as_posix()
 
 ensure_log_directory(log_dir)
 
-LOG_LEVEL = 'INFO'
-LOG_ENCODING = 'utf-8'
-LOG_FILE = '{}/{}_{}_{}.log'.format(log_dir, today.year, today.month, today.day)
+LOG_LEVEL: str = 'INFO'
+LOG_ENCODING: str = 'utf-8'
+LOG_FILE: str = '{}/{}_{}_{}.log'.format(log_dir, today.year, today.month, today.day)
