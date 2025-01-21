@@ -4,10 +4,11 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-from utils.spider_config import get_live_spider_config
+from utils.spider_config import model_to_list
 from utils.db import init_db
 from utils.times import get_now_timestamp
 from models.log import LogConnect
+from models.org_info import OrgInfoConnect
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
@@ -58,8 +59,9 @@ class WeiboIdolLiveSpiderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info("Spider opened: %s" % spider.name)
-        spider.live_spider_config = get_live_spider_config() # 从excel中读取配置
         init_db()
+        spider.live_spider_config = model_to_list(OrgInfoConnect.get_all())
+        print(spider.live_spider_config)
         LogConnect.add_one({
             'run_time': get_now_timestamp(),
             'message': '定时任务开始执行。',

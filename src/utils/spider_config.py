@@ -1,6 +1,6 @@
 """ 获取爬虫配置 """
 
-from typing import TypedDict
+from typing import TypedDict, Type
 from pathlib import Path
 from pandas import DataFrame, read_excel
 from utils.env import ROOT_DIR
@@ -24,3 +24,16 @@ def get_live_spider_config() -> list[SpiderConfigDict]:
     for k in result:
         result_list.append(result[k])
     return result_list
+
+
+def model_to_list(model: list) -> list[SpiderConfigDict]:
+    """ 转换数据类型 """
+    result: list[SpiderConfigDict] = []
+    for x in model:
+        result.append({
+            'uid': str(x.uid),
+            'lfid': str(x.lfid),
+            'area': str(x.area),
+            'remark': str(x.remark),
+        })
+    return result

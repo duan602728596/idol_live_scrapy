@@ -1,6 +1,6 @@
 """ 地偶主办信息 """
 
-from typing import Callable
+from typing import Callable, Type
 from sqlalchemy import String, text
 from sqlalchemy.orm import mapped_column, Mapped, Session
 from utils.db import BaseModel, engine_48tools1
@@ -57,3 +57,11 @@ class OrgInfoConnect:
             conn.execute(text(f'ALTER TABLE {test} RENAME TO {prod}')) # 测试 -> 正式
             conn.execute(text(f'ALTER TABLE {temp} RENAME TO {test}')) # 临时 -> 测试
             conn.commit()
+
+    @staticmethod
+    def get_all() -> list[Type[OrgInfoModel]]:
+        """ 读取所有主办信息 """
+        result: list[SpiderConfigDict] = []
+        with Session(engine_48tools1) as sess:
+            result: list[Type[OrgInfoModel]] = sess.query(OrgInfoModel).all()
+        return result
