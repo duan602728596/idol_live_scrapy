@@ -11,6 +11,7 @@ class SpiderConfigDict(TypedDict):
     uid: str
     lfid: str
     area: str
+    remark: str
 
 
 def get_live_spider_config() -> list[SpiderConfigDict]:
