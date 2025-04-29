@@ -1,5 +1,3 @@
-[<img src="https://api.gitsponsors.com/api/badge/img?id=98806656" height="40">](https://api.gitsponsors.com/api/badge/link?p=5a5ig2BFPwUsOungg6IEKT75dLJ8ylyawqWr5ueKLdO+mHm3hJAAEARYRD4yivrh5yd8zhtCZeM45wDkT3R7H1eDgt2JM9MOg6u8IardzcJI0K51nJslq/p+8Ewg3L+5gqlGscmStyqvWAzgerZEfA==)   
-
 # idol_live_scrapy
 
 爬虫项目。从微博中抓取地偶的主办的活动信息，并保存到数据库中。
